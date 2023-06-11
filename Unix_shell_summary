@@ -1,0 +1,156 @@
+#########################################
+#### High Performance Parallel Computing######
+#########################################
+##copy a1.R and a1.R as b101.R and c102.R
+$var1=( seq 1 2 )
+$ var2=( seq 101 102 )
+##$ echo ${var1[1]}
+$ for i in {1..2}; do cp b${var1[i]}.R /home/ucakmil/c${var2[i]}.R ;done
+$ for i in {2..25}; do cp a1.R /home/ucakmil/a${var1[i]}.R ;done
+[ucakmil@login07 hd_ens99]$ V1=({1..100..1})
+[ucakmil@login07 hd_ens99]$ V2=({9801..9900..1})
+[ucakmil@login07 hd_ens99]$ for i in {0..99}; do mv ensemble${V1[i]}.nc /home/ucakmil/lk_par_ens/hd_ens99/ensemble${V2[i]}.nc ;done
+for i in {1..9}; do sed -i '23s/1920/1643/1' 6e$i.R;done
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/6e$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/6e9.R,R_output=R_example.out 4.sh
+
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/6d$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/6d9.R,R_output=R_example.out 4.sh
+[submit both of the above]
+for i in {1..2}; do cp /home/ucakmil/hd_$i/a1.R /home/ucakmil/HD/a"$i""01".R ; done
+### ABC
+qsub -v R_input=/home/ucakmil/hd_proj/abc/A1.R,R_output=R_example.out array_job.sh
+global annual mean blended surface temperature
+##ABC plan
+-write in code the prior-vectors lambda and a.wght…keep them fixed
+-compute rss and save it in .nc file
+-submit 12 jobs each consisting of 100 iterations….do open MP over 100 iterations
+qstat | wc -l
+##submit jobs simultaneously
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/a$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/a9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/b$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/b9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/c$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/c9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/d$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/d9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/e$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/e9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/f$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/f9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/g$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/g9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/h$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/h9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/i$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/i9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/j$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/j9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/k$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/k9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/l$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/l9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/m$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/m9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/n$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/n9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/o$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/o9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/p$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/p9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/q$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/q9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/r$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/r9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/s$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/s9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/t$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/t9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/u$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/u9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/v$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/v9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/w$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/w9.R,R_output=R_example.out 4.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/x$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/x9.R,R_output=R_example.out 4.sh
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/mmmm$i.R,R_output=R_example.out 12.sh ; echo $i; done
+
+##edit R_scripts
+##~~~~~cp using for loop
+for i in {1..9}; do cp a$i.R  10a$i.R ; done
+for i in {1..9}; do cp a$i.R  10b$i.R ; done
+for i in {1..9}; do cp a$i.R  10c$i.R ; done
+for i in {1..9}; do cp a$i.R  10d$i.R ; done
+for i in {1..9}; do cp a$i.R  10e$i.R ; done
+for i in {1..9}; do cp a$i.R  10f$i.R ; done
+for i in {1..9}; do cp a$i.R  10g$i.R ; done
+for i in {1..9}; do cp a$i.R  10h$i.R ; done
+for i in {1..9}; do cp a$i.R  10i$i.R ; done
+for i in {1..9}; do cp a$i.R  10j$i.R ; done
+for i in {1..9}; do cp a$i.R  10k$i.R ; done
+for i in {1..9}; do cp a$i.R  10l$i.R ; done
+
+for i in {1..9}; do cp a$i.R  10m$i.R ; done
+for i in {1..9}; do cp a$i.R  10n$i.R ; done
+for i in {1..9}; do cp a$i.R  10o$i.R ; done
+for i in {1..9}; do cp a$i.R  10p$i.R ; done
+for i in {1..9}; do cp a$i.R  10q$i.R ; done
+for i in {1..9}; do cp a$i.R  10r$i.R ; done
+for i in {1..9}; do cp a$i.R  10s$i.R ; done
+for i in {1..9}; do cp a$i.R  10t$i.R ; done
+for i in {1..9}; do cp a$i.R  10u$i.R ; done
+for i in {1..9}; do cp a$i.R  10v$i.R ; done
+for i in {1..9}; do cp a$i.R  10w$i.R ; done
+for i in {1..9}; do cp a$i.R  10x$i.R ; done
+##~~~~~~Search and edit scripts and change time points
+First_group (Similarly the other 19 groups) 
+for i in {1..9}; do sed -i '23s/1/62/1' a$i.R;done
+for i in {1..9}; do sed -i '23s/1245/1701/1' b$i.R;done
+for i in {1..9}; do sed -i '23s/1246/1702/1' c$i.R;done
+for i in {1..9}; do sed -i '23s/1247/1703/1' d$i.R;done
+for i in {1..9}; do sed -i '23s/1248/1704/1' e$i.R;done
+for i in {1..9}; do sed -i '23s/1249/1705/1' f$i.R;done
+for i in {1..9}; do sed -i '23s/1250/1706/1' g$i.R;done
+for i in {1..9}; do sed -i '23s/1251/1707/1' h$i.R;done
+for i in {1..9}; do sed -i '23s/1252/1708/1' i$i.R;done
+for i in {1..9}; do sed -i '23s/1253/1709/1' j$i.R;done
+for i in {1..9}; do sed -i '23s/1254/1710/1' k$i.R;done
+for i in {1..9}; do sed -i '23s/1255/1711/1' l$i.R;done
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/ts/ts$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/ts/ts9.R,R_output=R_example.out 4.sh
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/ts/ts3.R,R_output=R_example.out 12.sh
+#2016 index
+for i in {1..9}; do sed -i '79s/1/1993/1' ts$i.R;done
+for i in {1..9}; do sed -i '80s/571/2004/1' ts$i.R;done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/a10.R,R_output=R_example.out 4.sh
+##SIMPLE array job
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/ts/t1.R,R_output=R_example.out arry_job.sh
+for i in {1..8}; do qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/ts/ts$i.R,R_output=R_example.out 12.sh ; echo $i; done
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/ts/ts9.R,R_output=R_example.out 4.sh
+qsub -v R_input=/home/ucakmil/hd_proj/r_sh_files/a10.R,R_output=R_example.out 5.sh
+Accessing legion remotely:
+	Go to Putty
+	Enter Host Name (or IP address)
+socrates.ucl.ac.uk (Hit open)
+	Enter ucl id and password
+	% ssh  legion.rc.ucl.ac.uk
+	Enter password
+Using R on Legion (on terminal)
+($ export R_LIBS=/your/local/R/library/path:$R_LIBS   #no need to do it, ignore)
+$ module unload compilers
+$ module unload mpi
+$ module load r/recommended
+$ R
+##R console will open
+>rm(list=ls())
+> f<- runif(100)
+> write.table(f, “test_dir/test_r_console.txt”)           #save it in test_dir folder in home directory
+>q() 
+# write n when an option pops up
+#check file using
+[ucakmil@login07 ~]$ cd test_dir
+[ucakmil@login07 test_dir]$ ls
+file_1.txt  file_2.txt  file_3.txt  r_file.R  submit_R_rand.sh  test_r_console.txt
+
